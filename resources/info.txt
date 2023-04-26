@@ -1,0 +1,9 @@
+1.favicon.io => favicon
+
+2.unDraw => for pics
+
+3.JWT secret => allkeysgenerator.com
+
+4.to get json dataset => https://www.mockaroo.com/+
+
+5.security => npm install helmet xss-clean express-mongo-sanitize express-rate-limit
