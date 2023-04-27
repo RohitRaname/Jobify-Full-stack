@@ -53,7 +53,8 @@ const login = async (req, res) => {
 };
 
 const getCurUser = async (req, res) => {
-  const user = await User.findOne();
+  const userId= req.user.userId;
+  const user = await User.findOne({_id:userId});
   return res.status(StatusCodes.OK).json({ user });
 };
 

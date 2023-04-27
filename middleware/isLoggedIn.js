@@ -1,13 +1,13 @@
+const { BadRequestError } = require("../errors");
 const UnAuthenticatedError = require("../errors/unauthenticated");
 const jwt = require("jsonwebtoken");
 
-const authenticateUser = (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
   const { token } = req.cookies;
 
-  console.log('token',token)
+  console.log("token", token);
 
-
-  if (!token) throw new UnAuthenticatedError("Authentication invalid");
+  if (!token) throw new BadRequestError("login first");
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     req.user = { userId: payload.userId };
@@ -20,6 +20,4 @@ const authenticateUser = (req, res, next) => {
   return next();
 };
 
-
-
-module.exports = authenticateUser;
+module.exports = isLoggedIn;

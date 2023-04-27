@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const apiLimiter = rateLimiter({
   windowMs: 15 * 60 * 1000,
-  max: 10,
+  max: 200,
   message: "Too many requests, try again after 15mins",
 });
 
@@ -30,6 +30,7 @@ process.on("uncaughtException", (err) => {
 });
 
 const app = new express();
+app.use(apiLimiter)
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
