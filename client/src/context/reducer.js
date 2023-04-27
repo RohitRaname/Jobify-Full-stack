@@ -65,6 +65,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      userLoading: false,
       user: payload.user,
       userLocation: payload.user.location,
       jobLocation: payload.user.location,
@@ -91,6 +92,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: payload.user,
+      userLoading: false,
       userLocation: payload.user.location,
       jobLocation: payload.user.location,
 

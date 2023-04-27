@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext,  useReducer } from "react";
+import React, { createContext, useContext,  useEffect,  useReducer } from "react";
 
 import reducer from "./reducer";
 import {
@@ -147,6 +147,11 @@ export const AppProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (user) return;
+    getCurrentUser();
+  }, []);
 
   ///////////////////////////////////////////
   // functions

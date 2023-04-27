@@ -58,58 +58,55 @@ const Register = () => {
 
   const { name, email, password, isMember } = state;
 
-  return (
-    <Wrapper className="page">
-      <form className="form" onSubmit={handleSubmit}>
-        <Logo />
-        <h3> {isMember ? "Login" : "Register"}</h3>
-        {showAlert && <Alert />}
+  return <Wrapper className="page">
+    <form className="form" onSubmit={handleSubmit}>
+      <Logo />
+      <h3> {isMember ? "Login" : "Register"}</h3>
+      {showAlert && <Alert />}
 
-        {!isMember && (
-          <FormRow
-            {...{ name: "name", value: name, type: "text", handleChange }}
-          />
-        )}
+      {!isMember && (
         <FormRow
-          {...{ name: "email", value: email, type: "email", handleChange }}
+          {...{ name: "name", value: name, type: "text", handleChange }}
         />
-        <FormRow
-          {...{
-            name: "password",
-            value: password,
-            type: "password",
-            handleChange,
-          }}
-        />
+      )}
+      <FormRow
+        {...{ name: "email", value: email, type: "email", handleChange }}
+      />
+      <FormRow
+        {...{
+          name: "password",
+          value: password,
+          type: "password",
+          handleChange,
+        }}
+      />
 
-        <button type="submit" className="btn btn-block" disabled={isLoading}>
-          Submit
-        </button>
-        <button
-          type="button"
-          className="btn btn-block btn-hipster"
-          disabled={isLoading}
-          onClick={() => {
-            login({
-              name: "testUser",
-              email: "test@gmail.com",
-              password: "secret",
-            });
-          }}
-        >
-          {isLoading?"...loading":"Demo App"}
-        </button>
+      <button type="submit" className="btn btn-block" disabled={isLoading}>
+        Submit
+      </button>
+      <button
+        type="button"
+        className="btn btn-block btn-hipster"
+        disabled={isLoading}
+        onClick={() => {
+          login({
+            name: "testUser",
+            email: "test@gmail.com",
+            password: "secret",
+          });
+        }}
+      >
+        {isLoading ? "...loading" : "Demo App"}
+      </button>
 
-        <p>
-          {isMember ? "Not a member yet? " : "Already a member?"}
-          <button className="member-btn" type="button" onClick={toggleMember}>
-            {isMember ? "Register" : "Login"}
-          </button>
-        </p>
-      </form>
-    </Wrapper>
-  );
+      <p>
+        {isMember ? "Not a member yet? " : "Already a member?"}
+        <button className="member-btn" type="button" onClick={toggleMember}>
+          {isMember ? "Register" : "Login"}
+        </button>
+      </p>
+    </form>
+  </Wrapper>;
 };
 
 export default Register;
-
